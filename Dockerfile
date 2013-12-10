@@ -1,4 +1,4 @@
-MAINTANER mukai_masaki, mashi3648@gmail.com
+MAINTANER marshi, mashi3648@gmail.com
 
 FROM ubuntu
 

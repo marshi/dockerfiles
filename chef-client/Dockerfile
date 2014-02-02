@@ -16,6 +16,9 @@ ENTRYPOINT ["/usr/sbin/sshd", "-D"]
 
 RUN apt-get install -y git
 
+RUN echo "vm.overcommit_memory = 1" >> /etc/sysctl.conf
+RUN /sbin/sysctl -p
+
 #rbenv
 RUN apt-get install -y build-essential bison libreadline6-dev curl git-core zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev autoconf libncurses5-dev
 RUN git clone git://github.com/sstephenson/rbenv.git .rbenv
@@ -27,3 +30,5 @@ RUN rbenv install 2.1.0
 RUN rbenv global 2.1.0
 RUN rbenv rehash
 RUN gem install chef --no-ri
+RUN echo "export PATH=$PATH:/root/.rbenv/bin" >> .bash_profile
+RUN echo "export PATH=$PATH:/root/.rbenv/bin/versions/2.1.0/bin" >> .bash_profile

@@ -29,6 +29,5 @@ ENV PATH $RBENV_ROOT/shims:$RBENV_ROOT/bin:/usr/local/sbin:/usr/local/bin:/usr/s
 RUN rbenv install 2.1.0
 RUN rbenv global 2.1.0
 RUN rbenv rehash
-RUN gem install chef --no-ri
 RUN echo "export PATH=\$PATH:/root/.rbenv/bin" >> .bash_profile
 RUN echo "export PATH=\$PATH:/root/.rbenv/versions/2.1.0/bin" >> .bash_profile

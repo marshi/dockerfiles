@@ -1,0 +1,21 @@
+FROM centos 
+
+MAINTAINER marshi, hoge@gmail.com
+
+USER root
+EXPOSE 22
+WORKDIR /root
+
+RUN echo root:root | chpasswd
+
+RUN yum update
+RUN yum install -y openssh-server
+RUN mkdir /var/run/sshd
+ENTRYPOINT ["/usr/sbin/sshd", "-D"]
+
+RUN echo "vm.overcommit_memory = 1" >> /etc/sysctl.conf
+RUN /sbin/sysctl -p
+
+#rbenv
+RUN yum install -y rubygems
+RUN gem install chef --no-ri --no-rdoc

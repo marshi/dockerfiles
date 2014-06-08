@@ -3,7 +3,7 @@ FROM marshi/centos-ssh
 MAINTAINER marshi, mashi3648@gmail.com
 
 USER root
-EXPOSE 22 80 10050 7373 7947
+EXPOSE 22 80 10050
 WORKDIR /root
 
 RUN yum install -y python-setuptools httpd
